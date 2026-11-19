@@ -25,7 +25,7 @@ dt{font-weight:700}dd{margin:0;color:var(--muted)}
 h3{margin:0;font-size:1.05rem;line-height:1.35}.org{margin:2px 0 0;color:var(--accent);font-weight:500}
 time{color:var(--muted);font-size:.88rem;white-space:nowrap;font-variant-numeric:tabular-nums}
 .job ul{margin:12px 0 0;padding-left:1.1em}.job li{margin:4px 0;max-width:72ch}.job li::marker{color:var(--accent2)}
-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+.visits b{color:var(--ink);font-variant-numeric:tabular-nums}footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
 @media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.skill{grid-template-columns:1fr;gap:2px}.job header{flex-direction:column;gap:4px}.dl{width:100%;justify-content:center}}
 @media print{.dl,footer{display:none}body{background:#fff}.job{border:0;padding:0}}
 </style></head><body><main class="wrap">
@@ -37,5 +37,17 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);display
 <section><h2>Technical skills</h2><dl class="skills">{{SKILLS}}</dl></section>
 <section><h2>Experience</h2>{{JOBS}}</section>
 <section><h2>Education</h2>{{EDU}}</section>
-<footer><span>© 2026 {{NAME}}</span><a href="./Arindam_Bose_Resume.docx" download style="color:var(--accent)">Download resume (.docx)</a></footer>
-</main></body></html>
+<footer><span>© 2026 {{NAME}}</span><span id="visits" class="visits" hidden>Visitors: <b id="visit-count"></b></span><a href="./Arindam_Bose_Resume.docx" download style="color:var(--accent)">Download resume (.docx)</a></footer>
+</main><script>
+(function(){
+  var api="https://abacus.jasoncameron.dev/", key="abose78-github-io/visits";
+  var seen=false; try{seen=localStorage.getItem("ab_seen")==="1";}catch(e){}
+  fetch(api+(seen?"get/":"hit/")+key).then(function(r){return r.json();}).then(function(d){
+    if(typeof d.value!=="number")return;
+    try{localStorage.setItem("ab_seen","1");}catch(e){}
+    document.getElementById("visit-count").textContent=d.value.toLocaleString();
+    document.getElementById("visits").hidden=false;
+  }).catch(function(){});
+})();
+</script>
+</body></html>
