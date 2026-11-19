@@ -153,20 +153,28 @@ async function run(q) {
 }
 
 // ---------- open / close / events ----------
-function openPanel(q) {
+const wide = matchMedia("(min-width:1100px)");
+const docked = () => wide.matches;
+function openPanel(q, opts = {}) {
   lastFocus = document.activeElement;
-  panel.classList.add("on"); backdrop.classList.add("on");
+  panel.classList.add("on");
+  document.documentElement.classList.toggle("ss-docked", docked());
+  panel.setAttribute("aria-modal", docked() ? "false" : "true");
+  if (!docked()) { backdrop.classList.add("on"); document.body.style.overflow = "hidden"; }
   panel.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
   if (typeof q === "string") input.value = q;
   run(input.value);
-  loadAI();
-  setTimeout(() => input.focus(), 50);
+  if (!opts.quiet || input.value) loadAI();
+  if (!opts.quiet) setTimeout(() => input.focus(), 50);
 }
-function closePanel() {
+input.addEventListener("focus", () => loadAI(), { once: true });
+wide.addEventListener("change", () => { if (panel.classList.contains("on")) { closePanel(true); if (wide.matches) openPanel(undefined, { quiet: true }); } });
+function closePanel(silent) {
   panel.classList.remove("on"); backdrop.classList.remove("on");
+  document.documentElement.classList.remove("ss-docked");
   panel.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  if (silent === true) return;
   lastFocus && lastFocus.focus && lastFocus.focus();
 }
 document.querySelectorAll("[data-ss-open]").forEach((b) => b.addEventListener("click", () => openPanel()));
@@ -184,4 +192,6 @@ panel.addEventListener("click", (e) => {
   const more = e.target.closest(".ss-more");
   if (more) { more.previousElementSibling.hidden = false; more.remove(); }
 });
-if (new URLSearchParams(location.search).has("search")) openPanel(new URLSearchParams(location.search).get("search") || "");
+const sp = new URLSearchParams(location.search);
+if (sp.has("search")) openPanel(sp.get("search") || "");
+else if (docked()) openPanel(undefined, { quiet: true });

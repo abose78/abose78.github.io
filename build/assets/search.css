@@ -8,7 +8,7 @@
 .ss-backdrop{position:fixed;inset:0;background:rgba(20,26,34,.32);opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
 .ss-backdrop.on{opacity:1;pointer-events:auto}
 .ss{position:fixed;top:0;right:0;height:100%;width:min(460px,100%);background:var(--paper);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(20,26,34,.12);transform:translateX(100%);transition:transform .25s ease;z-index:60;display:flex;flex-direction:column}
-.ss.on{transform:none}
+.ss.on{transform:none}.ss:not(.on){box-shadow:none;visibility:hidden;transition:transform .25s ease,visibility 0s .25s}
 @media (prefers-reduced-motion:reduce){.ss,.ss-backdrop{transition:none}}
 .ss-head{padding:20px 20px 14px;border-bottom:1px solid var(--line)}
 .ss-title{display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -59,7 +59,8 @@
 .ss-ev mark,.ss-hit mark{background:#fbe7c9;color:inherit;border-radius:3px;padding:0 1px}
 .ss-more{margin-top:8px;border:0;background:none;color:var(--accent);font:600 .8rem Satoshi,system-ui;cursor:pointer;padding:0}
 .ss-hit{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:#fff;font-size:.86rem;line-height:1.45}
-.ss-hit small span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}.ss-hit small{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.74rem;margin-top:4px}
+.ss-hit small span:first-child{flex:1;min-width:0}.ss-hit small span:last-child{white-space:nowrap;flex:none;font-variant-numeric:tabular-nums}.ss-hit small{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.74rem;margin-top:4px}
 .ss-note{font-size:.74rem;color:var(--muted);margin-top:14px;line-height:1.5}
 @media (max-width:640px){.ss{width:100%;border-left:0}.ss-open{right:14px;bottom:14px;padding:12px 16px}.ss-open kbd{display:none}.ss-top{width:100%;justify-content:center}}
 @media print{.ss,.ss-open,.ss-backdrop,.ss-top{display:none!important}}
+@media (min-width:1100px){html.ss-docked body{padding-right:460px}html.ss-docked .ss{box-shadow:none}html.ss-docked .ss-open{display:none}html.ss-docked .ss-backdrop{display:none}}
