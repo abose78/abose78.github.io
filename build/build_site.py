@@ -7,6 +7,7 @@ import html, json, re, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import resume_docx
+import skills_index
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCX = ROOT / "Arindam_Bose_Resume.docx"
@@ -77,6 +78,10 @@ def main():
     (OUT / "index.html").write_text(page)
     (OUT / DOCX.name).write_bytes(DOCX.read_bytes())
     (OUT / ".nojekyll").write_text("")
+    import shutil
+    shutil.copytree(Path(__file__).with_name("assets"), OUT / "assets", dirs_exist_ok=True)
+    index = skills_index.build(resume_docx.read(DOCX), Path(__file__).with_name("skills_taxonomy.json"))
+    (OUT / "search-index.json").write_text(json.dumps(index, separators=(",", ":")))
     print(f"Built {OUT/'index.html'}: {len(jobs)} jobs, {len(skills)} skill rows, {len(edu)} education entries")
 
 

@@ -28,10 +28,10 @@ time{color:var(--muted);font-size:.88rem;white-space:nowrap;font-variant-numeric
 .visits b{color:var(--ink);font-variant-numeric:tabular-nums}footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
 @media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.skill{grid-template-columns:1fr;gap:2px}.job header{flex-direction:column;gap:4px}.dl{width:100%;justify-content:center}}
 @media print{.dl,footer{display:none}body{background:#fff}.job{border:0;padding:0}}
-</style></head><body><main class="wrap">
+</style><link rel="stylesheet" href="./assets/search.css"></head><body><main class="wrap">
 <div class="top"><div><h1>{{NAME}}</h1><p class="role">{{TITLE}}</p>
 <ul class="contact">{{CONTACT}}</ul></div>
-<a class="dl" href="./Arindam_Bose_Resume.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>Download Word resume</a></div>
+<div class="actions"><button class="ss-top" type="button" data-ss-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Search my skills</button><a class="dl" href="./Arindam_Bose_Resume.docx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>Download Word resume</a></div></div>
 {{STATS}}
 <section><h2>Summary</h2><p class="summary">{{SUMMARY}}</p></section>
 <section><h2>Technical skills</h2><dl class="skills">{{SKILLS}}</dl></section>
@@ -50,4 +50,14 @@ time{color:var(--muted);font-size:.88rem;white-space:nowrap;font-variant-numeric
   }).catch(function(){});
 })();
 </script>
+<button class="ss-open" type="button" data-ss-open aria-label="Search skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Ask about my skills <kbd>/</kbd></button>
+<div class="ss-backdrop" id="ss-backdrop"></div>
+<aside class="ss" id="ss" role="dialog" aria-modal="true" aria-labelledby="ss-h" aria-hidden="true">
+<div class="ss-head"><div class="ss-title"><h2 id="ss-h">Skill search</h2><button class="ss-x" id="ss-x" type="button" aria-label="Close">×</button></div>
+<p class="ss-sub">Type a technology or a question. AI search finds matching experience and rates the level of expertise.</p>
+<div class="ss-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="ss-input" class="ss-input" type="search" placeholder="e.g. Kubernetes, AI agents, scaled CI/CD" autocomplete="off" aria-label="Search skills"></div>
+<div class="ss-chips"><button class="ss-chip" data-q="Kubernetes">Kubernetes</button><button class="ss-chip" data-q="Java">Java</button><button class="ss-chip" data-q="AI agents and RAG">AI agents & RAG</button><button class="ss-chip" data-q="security and compliance">Security</button><button class="ss-chip" data-q="built a platform used by many teams">Platform at scale</button></div>
+<div class="ss-status"><span class="ss-dot" id="ss-dot"></span><span id="ss-stext">AI search loads when you open this panel</span></div></div>
+<div class="ss-body" id="ss-body" aria-live="polite"></div></aside>
+<script type="module" src="./assets/search.js"></script>
 </body></html>

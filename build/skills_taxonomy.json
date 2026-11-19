@@ -1,0 +1,865 @@
+{
+ "_note": "Skills the search knows about. aliases = other ways it is written; related = techs that strengthen the expertise level when also in the profile.",
+ "skills": [
+  {
+   "name": "Java",
+   "category": "Languages",
+   "aliases": [
+    "java",
+    "j2ee",
+    "jakarta ee",
+    "java 17",
+    "java 21",
+    "jdk"
+   ],
+   "related": [
+    "Spring",
+    "Hibernate",
+    "Build Tools (Maven / Gradle)",
+    "Testing (JUnit / TestNG / Mockito)",
+    "Microservices",
+    "REST APIs",
+    "Tomcat",
+    "WebSphere"
+   ]
+  },
+  {
+   "name": "Python",
+   "category": "Languages",
+   "aliases": [
+    "python",
+    "python 3",
+    "pandas",
+    "numpy",
+    "jupyter",
+    "pytest"
+   ],
+   "related": [
+    "Machine Learning",
+    "Python APIs (FastAPI / Flask)",
+    "LangChain",
+    "RAG"
+   ]
+  },
+  {
+   "name": "Scala",
+   "category": "Languages",
+   "aliases": [
+    "scala"
+   ],
+   "related": [
+    "Spark",
+    "Kafka",
+    "Java"
+   ]
+  },
+  {
+   "name": "Groovy",
+   "category": "Languages",
+   "aliases": [
+    "groovy"
+   ],
+   "related": [
+    "Jenkins",
+    "CI/CD",
+    "Java"
+   ]
+  },
+  {
+   "name": "SQL & PL/SQL",
+   "category": "Data",
+   "aliases": [
+    "pl/sql",
+    "plsql",
+    "sql",
+    "mysql",
+    "oracle"
+   ],
+   "related": [
+    "Oracle",
+    "Cassandra",
+    "Data Modeling"
+   ]
+  },
+  {
+   "name": "J2ME / Mobile",
+   "category": "Languages",
+   "aliases": [
+    "j2me",
+    "mobile",
+    "pda",
+    "pdas"
+   ],
+   "related": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Spring",
+   "category": "Frameworks",
+   "aliases": [
+    "spring",
+    "spring boot"
+   ],
+   "related": [
+    "Java",
+    "Hibernate",
+    "REST APIs",
+    "Microservices"
+   ]
+  },
+  {
+   "name": "Hibernate",
+   "category": "Frameworks",
+   "aliases": [
+    "hibernate",
+    "jpa"
+   ],
+   "related": [
+    "Java",
+    "Spring",
+    "SQL & PL/SQL"
+   ]
+  },
+  {
+   "name": "EJB / Servlets / JSP",
+   "category": "Frameworks",
+   "aliases": [
+    "ejb",
+    "servlets",
+    "servlet",
+    "jsp"
+   ],
+   "related": [
+    "Java",
+    "WebSphere",
+    "Tomcat"
+   ]
+  },
+  {
+   "name": "REST APIs",
+   "category": "Architecture",
+   "aliases": [
+    "rest",
+    "restful",
+    "jax-rs",
+    "jersey",
+    "json",
+    "api",
+    "apis"
+   ],
+   "related": [
+    "Java",
+    "Microservices",
+    "OAuth 2.0",
+    "SOA"
+   ]
+  },
+  {
+   "name": "SOAP Web Services",
+   "category": "Architecture",
+   "aliases": [
+    "soap",
+    "web services",
+    "web service",
+    "wsdl",
+    "xml"
+   ],
+   "related": [
+    "Java",
+    "SOA",
+    "EJB / Servlets / JSP"
+   ]
+  },
+  {
+   "name": "SOA",
+   "category": "Architecture",
+   "aliases": [
+    "soa",
+    "service-oriented architecture",
+    "service oriented"
+   ],
+   "related": [
+    "REST APIs",
+    "SOAP Web Services",
+    "Microservices"
+   ]
+  },
+  {
+   "name": "Microservices",
+   "category": "Architecture",
+   "aliases": [
+    "microservices",
+    "microservice"
+   ],
+   "related": [
+    "Docker",
+    "Kubernetes",
+    "REST APIs",
+    "Spring"
+   ]
+  },
+  {
+   "name": "Platform Architecture",
+   "category": "Architecture",
+   "aliases": [
+    "architected",
+    "architecture",
+    "architectural",
+    "technology-agnostic",
+    "contract framework",
+    "contract frameworks",
+    "cross-system"
+   ],
+   "related": [
+    "CI/CD",
+    "Microservices",
+    "Terraform",
+    "Kubernetes",
+    "Automation"
+   ]
+  },
+  {
+   "name": "Messaging (JMS / ActiveMQ)",
+   "category": "Architecture",
+   "aliases": [
+    "jms",
+    "activemq",
+    "messaging"
+   ],
+   "related": [
+    "Kafka",
+    "Java",
+    "SOA"
+   ]
+  },
+  {
+   "name": "CI/CD",
+   "category": "DevOps",
+   "aliases": [
+    "ci/cd",
+    "cicd",
+    "continuous integration",
+    "continuous delivery",
+    "pipeline",
+    "pipelines",
+    "release",
+    "releases",
+    "tool onboarding"
+   ],
+   "related": [
+    "Jenkins",
+    "Groovy",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "Ansible",
+    "GitHub Copilot",
+    "DevSecOps"
+   ]
+  },
+  {
+   "name": "Jenkins",
+   "category": "DevOps",
+   "aliases": [
+    "jenkins"
+   ],
+   "related": [
+    "CI/CD",
+    "Groovy",
+    "Docker"
+   ]
+  },
+  {
+   "name": "Docker",
+   "category": "DevOps",
+   "aliases": [
+    "docker",
+    "containerized",
+    "containers",
+    "container"
+   ],
+   "related": [
+    "Kubernetes",
+    "Microservices",
+    "CI/CD"
+   ]
+  },
+  {
+   "name": "Kubernetes",
+   "category": "DevOps",
+   "aliases": [
+    "kubernetes",
+    "k8s",
+    "eks",
+    "aks",
+    "openshift",
+    "helm"
+   ],
+   "related": [
+    "Docker",
+    "Microservices",
+    "Terraform",
+    "CI/CD",
+    "Ansible",
+    "Monitoring"
+   ]
+  },
+  {
+   "name": "Terraform",
+   "category": "Cloud",
+   "aliases": [
+    "terraform",
+    "infrastructure as code",
+    "iac"
+   ],
+   "related": [
+    "AWS",
+    "Kubernetes",
+    "CI/CD",
+    "Cloud Cost Optimization"
+   ]
+  },
+  {
+   "name": "Ansible",
+   "category": "DevOps",
+   "aliases": [
+    "ansible"
+   ],
+   "related": [
+    "Terraform",
+    "Docker",
+    "Automation"
+   ]
+  },
+  {
+   "name": "AWS",
+   "category": "Cloud",
+   "aliases": [
+    "aws",
+    "amazon web services",
+    "emr",
+    "ec2",
+    "s3"
+   ],
+   "related": [
+    "Terraform",
+    "Spark",
+    "Kafka",
+    "Kubernetes"
+   ]
+  },
+  {
+   "name": "Cloud Cost Optimization",
+   "category": "Cloud",
+   "aliases": [
+    "lowering costs",
+    "cost",
+    "costs",
+    "finops"
+   ],
+   "related": [
+    "Terraform",
+    "AWS"
+   ]
+  },
+  {
+   "name": "Automation",
+   "category": "DevOps",
+   "aliases": [
+    "automation",
+    "automated",
+    "self-healing",
+    "roi-based automation"
+   ],
+   "related": [
+    "CI/CD",
+    "Ansible",
+    "Terraform",
+    "Groovy"
+   ]
+  },
+  {
+   "name": "Monitoring",
+   "category": "Observability",
+   "aliases": [
+    "monitoring",
+    "alerting",
+    "observability",
+    "logging"
+   ],
+   "related": [
+    "ELK Stack",
+    "Kafka",
+    "Kubernetes"
+   ]
+  },
+  {
+   "name": "ELK Stack",
+   "category": "Observability",
+   "aliases": [
+    "elk",
+    "elasticsearch",
+    "logstash",
+    "kibana"
+   ],
+   "related": [
+    "Monitoring",
+    "Kafka",
+    "Spark"
+   ]
+  },
+  {
+   "name": "Incident Resolution",
+   "category": "Operations",
+   "aliases": [
+    "incidents",
+    "production issues",
+    "customer-reported issues",
+    "failed transactions",
+    "system issues",
+    "uat"
+   ],
+   "related": [
+    "Monitoring",
+    "Automation"
+   ]
+  },
+  {
+   "name": "Kafka",
+   "category": "Data",
+   "aliases": [
+    "kafka",
+    "streaming",
+    "real-time"
+   ],
+   "related": [
+    "Spark",
+    "Scala",
+    "ELK Stack",
+    "AWS"
+   ]
+  },
+  {
+   "name": "Spark",
+   "category": "Data",
+   "aliases": [
+    "spark",
+    "big data"
+   ],
+   "related": [
+    "Scala",
+    "Kafka",
+    "AWS"
+   ]
+  },
+  {
+   "name": "Cassandra",
+   "category": "Data",
+   "aliases": [
+    "cassandra",
+    "nosql",
+    "secondary-key",
+    "secondary key"
+   ],
+   "related": [
+    "Java",
+    "Data Modeling",
+    "Spark"
+   ]
+  },
+  {
+   "name": "Oracle",
+   "category": "Data",
+   "aliases": [
+    "oracle"
+   ],
+   "related": [
+    "SQL & PL/SQL",
+    "Data Modeling"
+   ]
+  },
+  {
+   "name": "Data Modeling",
+   "category": "Data",
+   "aliases": [
+    "data model",
+    "data modeling",
+    "load estimation"
+   ],
+   "related": [
+    "SQL & PL/SQL",
+    "Oracle",
+    "Cassandra"
+   ]
+  },
+  {
+   "name": "DevSecOps",
+   "category": "Security",
+   "aliases": [
+    "devsecops",
+    "security",
+    "secured",
+    "shift-left",
+    "shift left",
+    "compliance controls"
+   ],
+   "related": [
+    "CI/CD",
+    "OAuth 2.0",
+    "Compliance",
+    "GitHub Copilot",
+    "Terraform"
+   ]
+  },
+  {
+   "name": "OAuth 2.0",
+   "category": "Security",
+   "aliases": [
+    "oauth",
+    "oauth 2.0",
+    "authentication",
+    "authorization",
+    "identity"
+   ],
+   "related": [
+    "RSA",
+    "REST APIs",
+    "DevSecOps"
+   ]
+  },
+  {
+   "name": "RSA",
+   "category": "Security",
+   "aliases": [
+    "rsa"
+   ],
+   "related": [
+    "OAuth 2.0",
+    "DevSecOps"
+   ]
+  },
+  {
+   "name": "Compliance",
+   "category": "Security",
+   "aliases": [
+    "compliance",
+    "audit",
+    "audits",
+    "regulatory",
+    "dodd-frank",
+    "respa"
+   ],
+   "related": [
+    "DevSecOps",
+    "OAuth 2.0",
+    "Terraform"
+   ]
+  },
+  {
+   "name": "GitHub Copilot",
+   "category": "AI",
+   "aliases": [
+    "copilot",
+    "github copilot",
+    "ai-assisted"
+   ],
+   "related": [
+    "Prompt Engineering",
+    "CI/CD",
+    "DevSecOps"
+   ]
+  },
+  {
+   "name": "AI Agents",
+   "category": "AI",
+   "aliases": [
+    "agent",
+    "agents",
+    "agentic",
+    "multi-agent",
+    "single-agent",
+    "react framework"
+   ],
+   "related": [
+    "LangChain",
+    "LangGraph",
+    "RAG",
+    "MCP",
+    "Python",
+    "LLM Evaluation"
+   ]
+  },
+  {
+   "name": "LangChain",
+   "category": "AI",
+   "aliases": [
+    "langchain"
+   ],
+   "related": [
+    "LangGraph",
+    "RAG",
+    "AI Agents",
+    "Python"
+   ]
+  },
+  {
+   "name": "LangGraph",
+   "category": "AI",
+   "aliases": [
+    "langgraph"
+   ],
+   "related": [
+    "LangChain",
+    "AI Agents"
+   ]
+  },
+  {
+   "name": "RAG",
+   "category": "AI",
+   "aliases": [
+    "rag",
+    "retrieval",
+    "embeddings",
+    "vector database",
+    "vector databases",
+    "chromadb",
+    "faiss"
+   ],
+   "related": [
+    "LangChain",
+    "Python",
+    "AI Agents",
+    "LLM Evaluation"
+   ]
+  },
+  {
+   "name": "MCP",
+   "category": "AI",
+   "aliases": [
+    "mcp",
+    "model context protocol"
+   ],
+   "related": [
+    "AI Agents",
+    "LangChain"
+   ]
+  },
+  {
+   "name": "LLM Evaluation",
+   "category": "AI",
+   "aliases": [
+    "deepeval",
+    "llm-as-a-judge",
+    "evaluated",
+    "evaluation"
+   ],
+   "related": [
+    "RAG",
+    "AI Agents",
+    "Responsible AI"
+   ]
+  },
+  {
+   "name": "Responsible AI",
+   "category": "AI",
+   "aliases": [
+    "llamaguard",
+    "guardrails",
+    "human-in-the-loop",
+    "responsible ai"
+   ],
+   "related": [
+    "LLM Evaluation",
+    "AI Agents",
+    "DevSecOps"
+   ]
+  },
+  {
+   "name": "Machine Learning",
+   "category": "AI",
+   "aliases": [
+    "machine learning",
+    "scikit-learn",
+    "ml",
+    "hugging face",
+    "sentence transformers"
+   ],
+   "related": [
+    "Python",
+    "RAG"
+   ]
+  },
+  {
+   "name": "Prompt Engineering",
+   "category": "AI",
+   "aliases": [
+    "prompt engineering",
+    "prompts",
+    "prompt"
+   ],
+   "related": [
+    "GitHub Copilot",
+    "AI Agents",
+    "RAG"
+   ]
+  },
+  {
+   "name": "Tomcat",
+   "category": "Platforms",
+   "aliases": [
+    "tomcat"
+   ],
+   "related": [
+    "Java",
+    "EJB / Servlets / JSP"
+   ]
+  },
+  {
+   "name": "WebSphere",
+   "category": "Platforms",
+   "aliases": [
+    "websphere"
+   ],
+   "related": [
+    "Java",
+    "EJB / Servlets / JSP"
+   ]
+  },
+  {
+   "name": "Solaris / Unix",
+   "category": "Platforms",
+   "aliases": [
+    "solaris",
+    "unix",
+    "linux"
+   ],
+   "related": [
+    "Java",
+    "Automation"
+   ]
+  },
+  {
+   "name": "SAP",
+   "category": "Platforms",
+   "aliases": [
+    "sap"
+   ],
+   "related": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Billing Systems",
+   "category": "Domains",
+   "aliases": [
+    "billing",
+    "amdocs",
+    "convergys",
+    "payment gateway",
+    "tariff",
+    "tax modeling"
+   ],
+   "related": [
+    "SOAP Web Services",
+    "Oracle"
+   ]
+  },
+  {
+   "name": "eCommerce",
+   "category": "Domains",
+   "aliases": [
+    "ecommerce",
+    "e-commerce"
+   ],
+   "related": [
+    "Java",
+    "Billing Systems"
+   ]
+  },
+  {
+   "name": "Leadership & Mentoring",
+   "category": "Leadership",
+   "aliases": [
+    "led",
+    "mentored",
+    "mentoring",
+    "hiring",
+    "guided the team",
+    "grew"
+   ],
+   "related": [
+    "Agile / Scrum",
+    "Platform Architecture"
+   ]
+  },
+  {
+   "name": "Agile / Scrum",
+   "category": "Leadership",
+   "aliases": [
+    "agile",
+    "scrum"
+   ],
+   "related": [
+    "Leadership & Mentoring",
+    "CI/CD"
+   ]
+  },
+  {
+   "name": "Technical Documentation",
+   "category": "Leadership",
+   "aliases": [
+    "gap",
+    "impact analysis",
+    "solution",
+    "documents"
+   ],
+   "related": [
+    "Platform Architecture"
+   ]
+  },
+  {
+   "name": "Build Tools (Maven / Gradle)",
+   "category": "DevOps",
+   "aliases": [
+    "maven",
+    "gradle"
+   ],
+   "related": [
+    "Java",
+    "Jenkins",
+    "CI/CD"
+   ]
+  },
+  {
+   "name": "Testing (JUnit / TestNG / Mockito)",
+   "category": "Quality",
+   "aliases": [
+    "junit",
+    "testng",
+    "mockito",
+    "pytest",
+    "test reviews",
+    "testing"
+   ],
+   "related": [
+    "Java",
+    "Python",
+    "CI/CD"
+   ]
+  },
+  {
+   "name": "Python APIs (FastAPI / Flask)",
+   "category": "Frameworks",
+   "aliases": [
+    "fastapi",
+    "flask"
+   ],
+   "related": [
+    "Python",
+    "REST APIs",
+    "Docker"
+   ]
+  }
+ ]
+}
