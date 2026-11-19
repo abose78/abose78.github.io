@@ -1,24 +1,53 @@
-name: Build resume site from Word file
+name: Build resume site
 on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      import_linkedin:
+        description: "Re-import from the LinkedIn file in linkedin/"
+        type: boolean
+        default: false
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install python-docx
+      - run: pip install python-docx pymupdf
+
+      - name: Check for a new LinkedIn file
+        id: li
+        run: |
+          changed=false
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            [ "${{ inputs.import_linkedin }}" = "true" ] && changed=true
+          elif git cat-file -e "${{ github.event.before }}" 2>/dev/null; then
+            git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- linkedin/ | grep -q . && changed=true
+          fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+
+      - name: Update Word resume from LinkedIn
+        if: steps.li.outputs.changed == 'true'
+        run: |
+          newest=$(git log -1 --name-only --diff-filter=AM --format= -- linkedin/ | head -1)
+          python build/import_linkedin.py ${newest:+"$newest"}
+          git config user.name "github-actions[bot]"
+          git config user.email "41898273+github-actions[bot]@users.noreply.github.com"
+          git add Arindam_Bose_Resume.docx
+          git diff --cached --quiet || { git commit -m "Update Word resume from LinkedIn"; git push; }
+
       - run: python build/build_site.py _site
       - uses: actions/upload-pages-artifact@v3
         with:

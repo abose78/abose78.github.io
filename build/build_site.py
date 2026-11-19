@@ -5,48 +5,14 @@ sections by their headings, and fills build/template.html.
 """
 import html, json, re, sys
 from pathlib import Path
-from docx import Document
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import resume_docx
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCX = ROOT / "Arindam_Bose_Resume.docx"
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
 
-SECTIONS = {
-    "summary": ("professional summary", "summary", "profile", "about"),
-    "skills": ("technical skills", "skills", "core skills", "top skills"),
-    "experience": ("experience", "professional experience", "work experience"),
-    "education": ("education", "education & certifications", "certifications"),
-}
 e = html.escape
-
-
-def section_of(text):
-    t = text.strip().lower().rstrip(":")
-    for key, names in SECTIONS.items():
-        if t in names:
-            return key
-    return None
-
-
-def is_bullet(p):
-    if p.style is not None and "list" in p.style.name.lower():
-        return True
-    pPr = p._p.pPr
-    return pPr is not None and pPr.numPr is not None
-
-
-def all_bold(p):
-    runs = [r for r in p.runs if r.text.strip()]
-    return bool(runs) and all(r.bold for r in runs)
-
-
-def split_title(text):
-    """'Title<TAB>Date' -> (title, date)."""
-    if "\t" in text:
-        a, b = text.rsplit("\t", 1)
-        return a.strip(), b.strip()
-    m = re.search(r"\s{2,}(\S.*)$", text)
-    return (text[: m.start()].strip(), m.group(1).strip()) if m else (text.strip(), "")
 
 
 def contact_html(items):
@@ -80,54 +46,14 @@ def entries_html(entries):
 
 
 def main():
-    paras = [p for p in Document(DOCX).paragraphs if p.text.strip()]
-    header, cur, data = [], None, {k: [] for k in SECTIONS}
-    for p in paras:
-        sec = section_of(p.text)
-        if sec:
-            cur = sec
-            continue
-        (data[cur] if cur else header).append(p)
-
-    if len(header) < 2 or not data["experience"]:
-        sys.exit("Could not find name/title or the Experience section in the Word file.")
-    name = header[0].text.strip()
-    title = header[1].text.strip() if len(header) > 2 else ""
-    contact_line = header[-1].text
-    contact = [c for c in re.split(r"\s*[|•·]\s*", contact_line) if c.strip()]
-
-    summary = " ".join(p.text.strip() for p in data["summary"])
-
-    skills = []
-    for p in data["skills"]:
-        t = p.text.strip()
-        if ":" in t:
-            k, v = t.split(":", 1)
-            skills.append((k.strip(), v.strip()))
-        else:
-            skills.append(("", t))
+    r = resume_docx.read(DOCX)
+    name, title, contact, summary = r["name"], r["title"], r["contact"], r["summary"]
     skills_html = "".join(
-        f'<div class="skill"><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k, v in skills
+        f'<div class="skill"><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k, v in r["skills"]
     )
-
-    def parse_entries(items):
-        entries = []
-        for p in items:
-            t = p.text.strip()
-            if is_bullet(p):
-                if entries:
-                    entries[-1]["bullets"].append(t)
-            elif all_bold(p) or "\t" in p.text:
-                ti, dt = split_title(p.text)
-                entries.append({"title": ti, "date": dt, "org": "", "bullets": []})
-            elif entries and not entries[-1]["org"]:
-                entries[-1]["org"] = t.replace(" — ", " · ")
-            elif entries:
-                entries[-1]["bullets"].append(t)
-        return entries
-
-    jobs = parse_entries(data["experience"])
-    edu = parse_entries(data["education"])
+    jobs, edu, skills = r["experience"], r["education"], r["skills"]
+    for en in jobs + edu:
+        en["org"] = en["org"].replace(" — ", " · ")
 
     stats_file = Path(__file__).with_name("stats.json")
     stats = json.loads(stats_file.read_text()) if stats_file.exists() else []
