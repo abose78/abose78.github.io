@@ -46,6 +46,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898273+github-actions[bot]@users.noreply.github.com"
           git add Arindam_Bose_Resume.docx
+          # Remove the uploaded LinkedIn file so it isn't left in the public repo
+          git ls-files linkedin/ | grep -iE '\.(pdf|zip|csv)$' | xargs -r git rm -q
           git diff --cached --quiet || { git commit -m "Update Word resume from LinkedIn"; git push; }
 
       - run: python build/build_site.py _site

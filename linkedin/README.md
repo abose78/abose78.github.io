@@ -10,4 +10,5 @@ GitHub then updates `Arindam_Bose_Resume.docx` and the website in about two minu
 From LinkedIn: Experience and Education.
 Kept from the Word file: name, title, contact line, summary, technical skills,
 and education entries LinkedIn doesn't list (e.g. the McCombs program).
+After reading it, GitHub deletes the uploaded LinkedIn file from the folder.
 You can still upload a Word file directly at any time; the latest upload wins.
