@@ -34,14 +34,14 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             [ "${{ inputs.import_linkedin }}" = "true" ] && changed=true
           elif git cat-file -e "${{ github.event.before }}" 2>/dev/null; then
-            git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- linkedin/ | grep -q . && changed=true
+            git diff --name-only --diff-filter=AM "${{ github.event.before }}" "${{ github.sha }}" -- linkedin/ | grep -qiE '\.(pdf|zip|csv)$' && changed=true
           fi
           echo "changed=$changed" >> "$GITHUB_OUTPUT"
 
       - name: Update Word resume from LinkedIn
         if: steps.li.outputs.changed == 'true'
         run: |
-          newest=$(git log -1 --name-only --diff-filter=AM --format= -- linkedin/ | head -1)
+          newest=$(git log --name-only --diff-filter=AM --format= -- linkedin/ | grep -iE '\.(pdf|zip)$' | head -1)
           python build/import_linkedin.py ${newest:+"$newest"}
           git config user.name "github-actions[bot]"
           git config user.email "41898273+github-actions[bot]@users.noreply.github.com"
